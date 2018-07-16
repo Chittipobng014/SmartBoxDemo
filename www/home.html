@@ -1,35 +1,76 @@
 <!DOCTYPE html>
 <html>
-<head>   
+
+<head>
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
     <title>Home Screen</title>
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
     <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <ons-page id="home">
-        <ons-toolbar>
-            <div class="left">
-              <ons-toolbar-button>
-                <ons-icon icon="md-menu"></ons-icon>
-              </ons-toolbar-button>
-            </div>
-            <div class="center">BLE Scanner</div>
-            <div class="right">
-              <ons-toolbar-button id="scan">Scan</ons-toolbar-button>
-            </div>
-          </ons-toolbar>
-        <ons-list>
-            <ons-list-header>Nearby Devices</ons-list-header>
-            <div id="devices">
-                
-            </div>
-            <ons-list-item>Item A</ons-list-item>
-            <ons-list-item>Item B</ons-list-item>
-        </ons-list>
-    </ons-page>
+    <ons-navigator swipeable id="myNavigator" page="page1.html"></ons-navigator>
+    <template id="page1.html">
+        <ons-page id="home">
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button>
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">BLE Scanner</div>
+                <div class="right">
+                    <ons-toolbar-button id="scan">Scan</ons-toolbar-button>
+                </div>
+            </ons-toolbar>
+            <ons-list>
+                <ons-list-header>Nearby Devices</ons-list-header>
+                <div id="devices">
+
+                </div>
+            </ons-list>
+            <ons-modal direction="up">
+                <div style="text-align: center">
+                    <p>
+                        <ons-icon icon="md-spinner" size="28px" spin></ons-icon> Connecting...
+                    </p>
+                </div>
+            </ons-modal>
+        </ons-page>
+    </template>
+
+    <template id="page2.html">
+        <ons-page id="page2">
+            <ons-toolbar>
+                <div class="left">
+                    <ons-back-button>Disconnect</ons-back-button>
+                </div>
+                <div class="center"></div>
+            </ons-toolbar>
+            <ons-card>
+                <ons-row style="height: 50px;text-align:center; margin: auto">
+                    <ons-col>
+                        <div id="value">
+
+                        </div>
+                    </ons-col>
+                </ons-row>
+            </ons-card>
+            <ons-card>
+                <ons-row style="height: 50px;text-align:center; margin: auto">
+                    <ons-col>
+                        <ons-button style="width: 150px" id="on">ON!</ons-button>
+                    </ons-col>
+                    <ons-col>
+                        <ons-button style="width: 150px" id="off">OFF!</ons-button>
+                    </ons-col>
+                </ons-row>
+            </ons-card>
+        </ons-page>
+    </template>
+
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/home.js"></script>
 </body>
